@@ -13,8 +13,8 @@ Plugin `vibe`, com duas skills:
 plugins/vibe/
   .claude-plugin/plugin.json        # versão = fonte da verdade
   skills/
-    spec/SKILL.md                   # (placeholder — substituir)
-    modular/SKILL.md                # (placeholder — substituir)
+    spec/SKILL.md                   # skill spec + references/
+    modular/SKILL.md                # skill modular + references/
 scripts/
   validate.sh                       # valida manifestos + frontmatter (usa python3)
   build-zips.sh                     # gera os .zip de release
@@ -23,21 +23,45 @@ scripts/
   release.yml                       # dispara ao criar tag vX.Y.Z
 ```
 
-## Colocando os arquivos das skills
+## Instalando
 
-1. Substitua o conteúdo de `plugins/vibe/skills/spec/` pelos arquivos reais do `requirement-refiner`.
-2. Substitua o conteúdo de `plugins/vibe/skills/modular/` pelos arquivos reais do `code-modularization`.
-3. Em cada `SKILL.md`, ajuste o frontmatter `name:` para `spec` / `modular` (os arquivos vêm com os nomes longos).
-4. Rode `bash scripts/validate.sh` localmente — tem que passar.
+### Claude Code / Cowork (via marketplace)
+
+A forma recomendada — instala o plugin completo e recebe updates ao re-rodar `install`:
+
+```bash
+claude plugin marketplace add https://github.com/magacho/vibe-mp-magacho
+claude plugin install vibe@vibe-mp
+```
+
+Depois, as skills ficam disponíveis pelos handles `vibe:spec` e `vibe:modular`.
+
+### claude.ai / Claude Desktop (chat)
+
+Baixe os `.zip` de skill da [última Release](https://github.com/magacho/vibe-mp-magacho/releases/latest) e suba em **Customize → Skills → `+`**:
+
+- `spec-vX.Y.Z.zip` — skill `spec`
+- `modular-vX.Y.Z.zip` — skill `modular`
+
+No chat/web não há auto-update — re-suba o `.zip` da nova versão para atualizar.
+
+### Plugin pessoal (Cowork / Desktop)
+
+Use o `vibe-plugin-vX.Y.Z.zip` da Release em **Personal plugins**, que traz as duas skills de uma vez.
+
+### Outras ferramentas (OpenClaw etc.)
+
+As skills são `SKILL.md` autocontidos — veja [Usando em outras ferramentas](#usando-em-outras-ferramentas-openclaw-etc) abaixo.
 
 ## Lançando uma release
 
 ```bash
 # 1. bump da versão (fonte da verdade): edite "version" em
-#    plugins/vibe/.claude-plugin/plugin.json   (ex.: 0.1.0 -> 0.2.0)
+#    plugins/vibe/.claude-plugin/plugin.json   (ex.: 0.2.0 -> 0.3.0)
+#    e mantenha marketplace.json em sincronia
 # 2. commit + tag IGUAL à versão
-git commit -am "release: vibe 0.2.0"
-git tag v0.2.0
+git commit -am "release: vibe 0.3.0"
+git tag v0.3.0
 git push origin main --tags
 ```
 
@@ -46,17 +70,6 @@ O workflow valida a estrutura, confere que a tag bate com o `plugin.json`, gera 
 Artefatos gerados por release:
 - `spec-vX.Y.Z.zip`, `modular-vX.Y.Z.zip` → upload de **skill** em claude.ai / Claude Desktop (chat).
 - `vibe-plugin-vX.Y.Z.zip` → upload de **plugin** no Cowork / Claude Desktop (Personal plugins).
-
-## Instalando
-
-**Claude Code / Cowork (via marketplace):**
-```bash
-claude plugin marketplace add https://github.com/magacho/vibe-mp-magacho
-claude plugin install vibe@vibe-mp
-```
-
-**claude.ai / Claude Desktop (chat):** Customize → Skills → `+` → upload do `.zip` da skill (da Release).
-No chat/web não há auto-update — re-suba o `.zip` pra atualizar.
 
 ## Usando em outras ferramentas (OpenClaw etc.)
 
