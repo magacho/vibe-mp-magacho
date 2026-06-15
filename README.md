@@ -3,8 +3,10 @@
 Marketplace de skills do toolset **vibe** — para Claude Code, Cowork e Claude Desktop / claude.ai, e portável pra outras ferramentas que leem `SKILL.md` (ex.: OpenClaw).
 
 Plugin `vibe`, com duas skills:
-- **`spec`** — refina uma demanda em especificação pronta pra construir (Example Mapping, EARS, edge cases, Gherkin, portão de prontidão). Handle: `vibe:spec`.
-- **`modular`** — projeta ou refatora código em módulos de baixo acoplamento (modo legado + modo projeto novo). Handle: `vibe:modular`.
+- **`spec`** — refina uma demanda em especificação pronta pra construir (Example Mapping, EARS, edge cases, Gherkin, portão de prontidão). Handle: `vibe:spec`. → [documentação](docs/spec.md)
+- **`modular`** — projeta ou refatora código em módulos de baixo acoplamento (modo legado + modo projeto novo). Handle: `vibe:modular`. → [documentação](docs/modular.md)
+
+Cada doc traz quando usar (e quando não), como invocar, exemplos de uso e cenários onde a skill faz sentido.
 
 ## Estrutura
 
@@ -21,6 +23,9 @@ scripts/
 .github/workflows/
   ci.yml                            # valida em todo PR / push na main
   release.yml                       # dispara ao criar tag vX.Y.Z
+docs/
+  spec.md                           # doc da skill spec (uso + cenários)
+  modular.md                        # doc da skill modular (uso + cenários)
 ```
 
 ## Instalando
