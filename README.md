@@ -72,9 +72,9 @@ git push origin main --tags
 
 O workflow valida a estrutura, confere que a tag bate com o `plugin.json`, gera os zips e publica a Release com eles anexados.
 
-Artefatos gerados por release:
-- `spec-vX.Y.Z.zip`, `modular-vX.Y.Z.zip` → upload de **skill** em claude.ai / Claude Desktop (chat).
-- `vibe-plugin-vX.Y.Z.zip` → upload de **plugin** no Cowork / Claude Desktop (Personal plugins).
+Artefatos gerados por release (cada um já embute a documentação de uso):
+- `spec-vX.Y.Z.zip`, `modular-vX.Y.Z.zip` → upload de **skill** em claude.ai / Claude Desktop (chat). Inclui `USAGE.md` (cópia do doc da skill) ao lado do `SKILL.md`.
+- `vibe-plugin-vX.Y.Z.zip` → upload de **plugin** no Cowork / Claude Desktop (Personal plugins). Inclui a pasta `docs/`.
 
 ## Usando em outras ferramentas (OpenClaw etc.)
 
