@@ -1,0 +1,15 @@
+{
+  "name": "vibe-mp",
+  "owner": { "name": "magacho" },
+  "metadata": {
+    "description": "Vibecoding toolset — skills for refining demands and modularizing code.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "vibe",
+      "source": "./plugins/vibe",
+      "description": "Refine demands into build-ready specs (spec), and design or refactor code into clean low-coupling modules (modular)."
+    }
+  ]
+}
