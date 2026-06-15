@@ -1,6 +1,6 @@
 {
   "name": "vibe",
   "description": "Refine demands into build-ready specs (spec), and design or refactor code into clean low-coupling modules (modular).",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": { "name": "Bemobi" }
 }

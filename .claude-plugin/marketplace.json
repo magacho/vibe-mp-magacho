@@ -3,7 +3,7 @@
   "owner": { "name": "magacho" },
   "metadata": {
     "description": "Vibecoding toolset — skills for refining demands and modularizing code.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
