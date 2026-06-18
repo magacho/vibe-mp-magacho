@@ -1,6 +1,6 @@
 {
   "name": "vibe",
-  "description": "Refine demands into build-ready specs (spec), design or refactor code into clean low-coupling modules (modular), and audit a codebase 360° into a Bemobi HTML deck (codebase-360).",
-  "version": "0.4.0",
+  "description": "Refine demands into build-ready specs (spec), design or refactor code into clean low-coupling modules (modular), and audit a codebase 360° into a Bemobi HTML deck (360).",
+  "version": "0.4.1",
   "author": { "name": "Bemobi" }
 }

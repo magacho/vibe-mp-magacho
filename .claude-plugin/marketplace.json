@@ -3,13 +3,13 @@
   "owner": { "name": "magacho" },
   "metadata": {
     "description": "Vibecoding toolset — skills for refining demands and modularizing code.",
-    "version": "0.4.0"
+    "version": "0.4.1"
   },
   "plugins": [
     {
       "name": "vibe",
       "source": "./plugins/vibe",
-      "description": "Refine demands into build-ready specs (spec), design or refactor code into clean low-coupling modules (modular), and audit a codebase 360° into a Bemobi HTML deck (codebase-360)."
+      "description": "Refine demands into build-ready specs (spec), design or refactor code into clean low-coupling modules (modular), and audit a codebase 360° into a Bemobi HTML deck (360)."
     }
   ]
 }
