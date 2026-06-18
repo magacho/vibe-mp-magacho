@@ -2,9 +2,10 @@
 
 Marketplace de skills do toolset **vibe** — para Claude Code, Cowork e Claude Desktop / claude.ai, e portável pra outras ferramentas que leem `SKILL.md` (ex.: OpenClaw).
 
-Plugin `vibe`, com duas skills:
+Plugin `vibe`, com três skills:
 - **`spec`** — refina uma demanda em especificação pronta pra construir (Example Mapping, EARS, edge cases, Gherkin, portão de prontidão). Handle: `vibe:spec`. → [documentação](docs/spec.md)
 - **`modular`** — projeta ou refatora código em módulos de baixo acoplamento (modo legado + modo projeto novo). Handle: `vibe:modular`. → [documentação](docs/modular.md)
+- **`codebase-360`** — audita a base de código em todas as dimensões (AI/token, manutenção, reuso, componentes) e gera uma apresentação HTML Bemobi. Report-only. Handle: `vibe:codebase-360`. → [documentação](docs/360.md)
 
 Cada doc traz quando usar (e quando não), como invocar, exemplos de uso e cenários onde a skill faz sentido.
 
@@ -17,6 +18,7 @@ plugins/vibe/
   skills/
     spec/SKILL.md                   # skill spec + references/
     modular/SKILL.md                # skill modular + references/
+    360/SKILL.md                    # skill codebase-360 + scripts/
 scripts/
   validate.sh                       # valida manifestos + frontmatter (usa python3)
   build-zips.sh                     # gera os .zip de release
@@ -26,6 +28,7 @@ scripts/
 docs/
   spec.md                           # doc da skill spec (uso + cenários)
   modular.md                        # doc da skill modular (uso + cenários)
+  360.md                            # doc da skill codebase-360 (uso + cenários)
 ```
 
 ## Instalando
@@ -39,7 +42,7 @@ claude plugin marketplace add https://github.com/magacho/vibe-mp-magacho
 claude plugin install vibe@vibe-mp
 ```
 
-Depois, as skills ficam disponíveis pelos handles `vibe:spec` e `vibe:modular`.
+Depois, as skills ficam disponíveis pelos handles `vibe:spec`, `vibe:modular` e `vibe:codebase-360`.
 
 ### claude.ai / Claude Desktop (chat)
 
@@ -47,6 +50,7 @@ Baixe os `.zip` de skill da [última Release](https://github.com/magacho/vibe-mp
 
 - `spec-vX.Y.Z.zip` — skill `spec`
 - `modular-vX.Y.Z.zip` — skill `modular`
+- `360-vX.Y.Z.zip` — skill `codebase-360`
 
 No chat/web não há auto-update — re-suba o `.zip` da nova versão para atualizar.
 
@@ -73,13 +77,13 @@ git push origin main --tags
 O workflow valida a estrutura, confere que a tag bate com o `plugin.json`, gera os zips e publica a Release com eles anexados.
 
 Artefatos gerados por release (cada um já embute a documentação de uso):
-- `spec-vX.Y.Z.zip`, `modular-vX.Y.Z.zip` → upload de **skill** em claude.ai / Claude Desktop (chat). Inclui `USAGE.md` (cópia do doc da skill) ao lado do `SKILL.md`.
+- `spec-vX.Y.Z.zip`, `modular-vX.Y.Z.zip`, `360-vX.Y.Z.zip` → upload de **skill** em claude.ai / Claude Desktop (chat). Inclui `USAGE.md` (cópia do doc da skill) ao lado do `SKILL.md`.
 - `vibe-plugin-vX.Y.Z.zip` → upload de **plugin** no Cowork / Claude Desktop (Personal plugins). Inclui a pasta `docs/`.
 
 ## Usando em outras ferramentas (OpenClaw etc.)
 
 As skills são `SKILL.md` autocontidos (frontmatter `name` + `description` + corpo markdown), então portam sem conversão pra qualquer agente que leia esse formato. No OpenClaw, por exemplo:
 - aponte um skill root pro clone deste repo (a descoberta é recursiva e acha os `SKILL.md` em `plugins/vibe/skills/`), **ou**
-- copie as pastas `spec/` e `modular/` (ou o conteúdo dos zips de skill) pra `~/.openclaw/workspace/skills/`.
+- copie as pastas `spec/`, `modular/` e `360/` (ou o conteúdo dos zips de skill) pra `~/.openclaw/workspace/skills/`.
 
-O nome da skill vem do campo `name` do frontmatter, então o handle continua `spec` / `modular`. Só o invólucro do Claude (`.claude-plugin/`, `claude plugin install`) é que não se aplica fora do ecossistema Claude.
+O nome da skill vem do campo `name` do frontmatter, então o handle continua `spec` / `modular` / `codebase-360`. Só o invólucro do Claude (`.claude-plugin/`, `claude plugin install`) é que não se aplica fora do ecossistema Claude.
